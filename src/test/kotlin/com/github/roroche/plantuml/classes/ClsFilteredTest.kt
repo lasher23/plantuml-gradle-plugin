@@ -18,12 +18,7 @@ class ClsFilteredTest : TestsSuite(
                 origin = ClsInPackage(
                     packageName = "com.github.roroche.examples"
                 ),
-                ignored = ClsWithNames(
-                    names = listOf(
-                        "com.github.roroche.examples.Vehicle"
-                    ),
-                    classLoader = Thread.currentThread().contextClassLoader
-                )
+                ignored = listOf("com.github.roroche.examples.Vehicle")
             ),
             expectedClasses = listOf(
                 Car::class.java,
@@ -38,9 +33,7 @@ class ClsFilteredTest : TestsSuite(
                 origin = Classes.Simple(
                     emptyList()
                 ),
-                ignored = Classes.Simple(
-                    listOf(ClsFilteredTest::class.java)
-                )
+                ignored = listOf(ClsFilteredTest::class.qualifiedName!!)
             )
         )
     ),
@@ -51,9 +44,7 @@ class ClsFilteredTest : TestsSuite(
                 origin = Classes.Simple(
                     emptyList()
                 ),
-                ignored = Classes.Simple(
-                    emptyList()
-                )
+                ignored = emptyList()
             )
         )
     ),
@@ -64,9 +55,7 @@ class ClsFilteredTest : TestsSuite(
                 origin = Classes.Simple(
                     listOf(ClsFilteredTest::class.java)
                 ),
-                ignored = Classes.Simple(
-                    emptyList()
-                )
+                ignored = emptyList()
             ),
             expectedClasses = listOf(
                 ClsFilteredTest::class.java

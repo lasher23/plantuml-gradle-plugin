@@ -62,14 +62,7 @@ class BuildClassDiagramTask extends DefaultTask implements CustomTask {
                                 "Package content ->",
                                 logger
                         ),
-                        new ClsWithLog(
-                                new ClsWithNames(
-                                        extension.ignoredClasses,
-                                        classLoader
-                                ),
-                                "To ignore ->",
-                                logger
-                        )
+                        extension.ignoredClasses
                 ),
                 "To print in class diagram ->",
                 logger

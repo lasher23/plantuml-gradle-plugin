@@ -1,5 +1,7 @@
 package com.github.roroche.plantuml.classes
 
+import ch.ifocusit.plantuml.classdiagram.model.clazz.Clazz
+
 /**
  * Utility class to filter [Classes].
  *
@@ -8,7 +10,7 @@ package com.github.roroche.plantuml.classes
  */
 class ClsFiltered(
     origin: Classes,
-    private val ignored: Classes
+    private val ignored: List<String>
 ) : Classes.Wrap(origin) {
     /**
      * @return Filtered classes to be used for diagram generation.
@@ -18,12 +20,12 @@ class ClsFiltered(
             origin.list().isEmpty() -> {
                 emptyList()
             }
-            ignored.list().isEmpty() -> {
+            ignored.isEmpty() -> {
                 origin.list()
             }
             else -> {
                 origin.list().filterNot { clazz ->
-                    ignored.list().contains(clazz)
+                    ignored.any { it.toRegex().matches(clazz.name) }
                 }
             }
         }

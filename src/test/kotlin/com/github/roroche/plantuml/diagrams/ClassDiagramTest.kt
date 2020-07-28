@@ -6,6 +6,7 @@ import com.github.roroche.plantuml.classes.ClsInPackage
 import com.github.roroche.plantuml.classes.ClsWithNames
 import com.pragmaticobjects.oo.tests.TestCase
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite
+import org.apache.groovy.json.internal.CharScanner
 
 /**
  * [TestsSuite] to perform checks about [ClassDiagram].
@@ -50,12 +51,7 @@ class ClassDiagramTest : TestsSuite(
                     origin = ClsInPackage(
                         packageName = "com.github.roroche.examples"
                     ),
-                    ignored = ClsWithNames(
-                        names = listOf(
-                            "com.github.roroche.examples.Vehicle"
-                        ),
-                        classLoader = Thread.currentThread().contextClassLoader
-                    )
+                    ignored = listOf("com.github.roroche.examples.Vehicle")
                 )
             ),
             expectedContent = """
